@@ -1,6 +1,6 @@
 {
-  "name": "things-date-picker",
-  "version": "0.1.23",
+  "name": "things-video-selector",
+  "version": "0.1.0",
   "authors": [
     "Hatio Lab. <heartyoh@hatiolab.com>"
   ],
@@ -10,7 +10,7 @@
     "polymer",
     "seed"
   ],
-  "main": "things-date-picker.html",
+  "main": "things-video-selector.html",
   "license": "http://polymer.github.io/LICENSE.txt",
   "homepage": "https://github.com/ThingsElements/seed-element/",
   "ignore": [
