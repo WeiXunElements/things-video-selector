@@ -14,10 +14,10 @@
 <link rel="import" href="things-common-video-player.html">
 
 <!--
-`<things-video-selector>` Things Image Selector
+`<things-video-selector>`
 
   Example
-    
+
     <things-video-selector
       resource-url="attachments">
     </things-video-selector>
@@ -66,7 +66,7 @@
     }
     paper-toolbar::shadow #topBar{
       height:45px;
-    } 
+    }
     paper-toolbar .title{
       margin-left:32px !important;
       line-height:initial !important;
@@ -86,9 +86,9 @@
     }
     .container {
       overflow-y: auto;
-    }    
+    }
   </style>
-  <template>    
+  <template>
     <label>[[label]]</label>
     <input is="iron-input" bind-value="{{value}}">
     <paper-icon-button suffix on-tap="clearValue" icon="clear" alt="clear" title="clear">
@@ -99,8 +99,8 @@
       id="attachment-search"
       method="GET"
       resource-url="[[resourceUrl]]"
-      resource-action="index" 
-      page="[[page]]" 
+      resource-action="index"
+      page="[[page]]"
       limit="[[limit]]"
       sort-fields="[[sortFields]]"
       query-fields="[[queryFields]]"
@@ -109,9 +109,9 @@
     </things-ajax>
 
     <things-ajax
-      id="default-storage" 
+      id="default-storage"
       resource-action="get">
-    </things-ajax>  
+    </things-ajax>
 
     <paper-dialog
       id="dialog"
@@ -123,7 +123,7 @@
         <div class="buttonsGroup">
           <button dialog-dismiss class="close-btn"></button>
         </div>
-      </paper-toolbar>     
+      </paper-toolbar>
 
       <paper-material elevation="0" on-keypress="handleKeyPress">
         <div class="layout vertical flex">
@@ -141,7 +141,7 @@
             <paper-fab icon="search" title="search" on-tap="_onSearchFormTap"></paper-fab>
           </form>
         </div>
-      </paper-material>      
+      </paper-material>
 
       <things-card-image-list
         id="card-list"
@@ -173,12 +173,14 @@
       behaviors: [
         Things.GlobalBehavior,
         Things.ViewOpenBehavior
-      ],      
+      ],
 
       properties: {
-        
+
         /**
          * selector field 앞에 붙는 label property
+         * *********
+         * @type {String}
          */
         label: {
           type: String
@@ -186,6 +188,8 @@
 
         /**
          * image 선택시 field에 mapping 되는 value property
+         * ******
+         * @type {String}
          */
         value: {
           type: String,
@@ -194,6 +198,8 @@
 
         /**
          * selector dialog 상단에 표기 되는 title
+         * ******
+         * @type {String}
          */
         title: {
           type: String,
@@ -202,6 +208,8 @@
 
         /**
          * image objects를 호출할 resource url
+         * ******
+         * @type {String}
          */
         resourceUrl: {
           type: String,
@@ -210,6 +218,8 @@
 
         /**
          * 총 페이지 수
+         * *******
+         * @type {String}
          */
         totalCount: {
           type: Number,
@@ -218,6 +228,8 @@
 
         /**
          * 현재 페이지
+         * *******
+         * @type {String}
          */
         page: {
           type: Number,
@@ -225,7 +237,9 @@
         },
 
         /**
-         * 한 페이지 당 보여질 레코드 수 
+         * 한 페이지 당 보여질 레코드 수
+         * ******
+         * @type {Number}
          */
         limit: {
           type: Number,
@@ -234,6 +248,8 @@
 
         /**
          * ajax 호출을 통해 받는 response
+         * *******
+         * @type {Object}
          */
         lastResponse: {
           type: Object,
@@ -242,6 +258,8 @@
 
         /**
          * image가 아닌 파일들을 필터링한 후 초기화 하는 items object
+         * *******
+         * @type {Array}
          */
         newItems: {
           type: Array,
@@ -253,6 +271,8 @@
         /**
          * detail form field에 mapping 시킬 data 목록들로 빈간이 없이 ','로 구분하여 입력합니다.
          * ex) name,description,file_size
+         * ******
+         * @type {String}
          */
         detailFields: {
           type: String,
@@ -261,6 +281,8 @@
 
         /**
          * 선택한 이미지의 metaData가 담겨 있는 Object
+         * ******
+         * @type {Object}
          */
         metaData: {
           type: Object
@@ -269,6 +291,8 @@
         /**
          * input field에 표시할 field 값을 선택 합니다.
          * 기본값은 name 필드
+         * *******
+         * @type {String}
          */
         displayField: {
           type: String,
@@ -277,6 +301,8 @@
 
         /**
          * input field에 full url을 표시할지 여부를 결정 합니다.
+         * *******
+         * @type {Boolean}
          */
         displayFullUrl: {
           type: Boolean,
@@ -285,6 +311,8 @@
 
         /**
          * baseUrl을 변수화 하기 위해 사용하는 property
+         * *******
+         * @type {String}
          */
         baseUrlAlias: {
           type: String
@@ -292,6 +320,8 @@
 
         /**
          * storage를 초기에 설정하기 위한 property
+         * *******
+         * @type {String}
          */
         defaultStorage: {
           type: String,
@@ -300,6 +330,8 @@
 
         /**
          * ajax sorting field
+         * ******
+         * @type {Array}
          */
         sortFields: {
           type: Array,
@@ -310,6 +342,8 @@
 
         /**
          * 이름으로 검색 할 때 추가되는 검색 조건
+         * ******
+         * @type {Array}
          */
         queryFields: {
           type: Array,
@@ -318,6 +352,8 @@
 
         /**
          * storage combo를 통해 검색 조건을 설정하기 위한 property
+         * ********
+         * @type {Array}
          */
         storageFilters: {
           type: Array
@@ -325,6 +361,8 @@
 
         /**
          * upload 버튼 활성화 여부
+         * ********
+         * @type {Boolean}
          */
         useUpload: {
           type: Boolean,
@@ -332,7 +370,9 @@
         },
 
         /**
-         * 검색 조건에 쓰일 name 
+         * 검색 조건에 쓰일 name
+         * ********
+         * @type {String}
          */
         searchName: {
           type: String
@@ -340,6 +380,8 @@
 
         /**
          * 검색 조건에 쓰일 storage
+         * *******
+         * @type {String}
          */
         searchStorage: {
           type: String
@@ -372,10 +414,10 @@
         var tempValue = e.detail[this.displayField];
 
         this.value = (this.displayFullUrl) ? (baseUrl + '/stream/' + tempValue) : tempValue;
-        
+
         e.detail.value = this.value;
         this.metaData = e.detail;
-        
+
         if(this.playFlag) {
           this.playVideo(this.selectedVideoInfo);
           this.playFlag = false;
@@ -386,17 +428,19 @@
 
       /**
        * ajax 호출을 통해 받은 lastResponse에서 image 파일이 아닌 것들을 filltering
+       * ********
        */
       _responseChanged: function(lastResponse) {
         var newItems = lastResponse && lastResponse.items ? lastResponse.items : [];
         this.totalCount = lastResponse && lastResponse.total ? lastResponse.total : this.newItems.length;
         newItems.forEach(function(item) { item.attachment_id = item.id; });
-        
+
         this.newItems = (this.page == 1) ? newItems : this.newItems.concat(newItems);
       },
 
       /**
        * value 값이 변경 되었을때 발생하는 이벤트
+       * ********
        */
       _valueChanged: function(value) {
         this.fire('things-image-changed', value);
@@ -404,13 +448,15 @@
 
       /**
        * search btn tap event
+       * ********
        */
       _onSearchFormTap: function() {
         this.refreshImages();
       },
 
       /**
-       * storage combo에서 값변경시 
+       * storage combo에서 값변경시
+       * ********
        */
       storageChanged: function(event) {
         if(event.detail.value && typeof(event.detail.value) == 'number') {
@@ -422,6 +468,7 @@
 
       /**
        * 버튼 클릭시 image selector dialog toggle
+       * ********
        */
       toggleImageSelector: function() {
         if(this.newItems && this.newItems.length > 0) {
@@ -435,6 +482,7 @@
 
       /**
        * 셀렉터에 출력된 이미지를 refresh하는 버튼
+       * ********
        */
       refreshImages: function() {
         this.page = 1;
@@ -452,7 +500,7 @@
             operator: 'contains',
             value: searchName
           });
-        } 
+        }
 
         // if(searchStorage) {
         //   filters.push({
@@ -467,6 +515,7 @@
 
       /**
        * 버튼 클릭시 upload dialog toggle
+       * ********
        */
       toggleFileUpload: function() {
         var upload = document.createElement('things-file-upload');
@@ -481,6 +530,7 @@
 
       /**
        * 다음 페이지 이동
+       * ******
        */
       goNextPage: function() {
         if(this.totalCount == 0){
@@ -497,6 +547,7 @@
 
       /**
        * 선택한 이미지의 정보들을 삭제 합니다.
+       * *******
        */
       clearValue: function() {
         this.value = '';
@@ -504,7 +555,8 @@
       },
 
       /**
-       * enter 입력시 
+       * enter 입력시
+       * ******
        */
       handleKeyPress: function(e) {
         if(e.charCode == 13) {
@@ -524,6 +576,8 @@
 
       /**
        * ajax 호출 listner로 response를 통해 storage의 값들을 초기화 합니다.
+       * *******
+       *
        */
       _defaultStorageValueChanged: function(e) {
         this.searchStorage = e.detail.id;

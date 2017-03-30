@@ -9,14 +9,14 @@
         @apply(--layout-vertical);
         @apply(--layout-flex);
       }
-      
+
       video {
         @apply(--layout-flex);
       }
     </style>
 
-    <video 
-      id="the-video" 
+    <video
+      id="the-video"
       autoplay="[[autoplay]]"
       loop="[[loop]]"
       controls="[[controls]]"
@@ -37,6 +37,8 @@
       properties: {
         /**
          * Video AutoPlay
+         * *******
+         * @type {Boolean}
          */
         autoplay: {
           type: Boolean,
@@ -45,6 +47,8 @@
 
         /**
          * Video Loop
+         * *******
+         * @type {Boolean}
          */
         loop: {
           type: Boolean,
@@ -53,6 +57,8 @@
 
         /**
          * Video Controls
+         * ******
+         * @type {Boolean}
          */
         controls: {
           type: Boolean,
@@ -61,6 +67,8 @@
 
         /**
          * Title
+         * ******
+         * @type {String}
          */
         title: {
           type: String
@@ -68,6 +76,8 @@
 
         /**
          * Video URL
+         * ******
+         * @type {String}
          */
         videoUrl: {
           type: String
