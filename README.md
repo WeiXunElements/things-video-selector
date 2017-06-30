@@ -1,6 +1,6 @@
 # things-video-selector
 
-## 비디오 선택용 컴포넌트. 해당 컴포넌트는 Event `things-video-selector-toggle`을 통하여 `things-dialog-manager`로 Event를 전송하여 `things-video-selector-dialog`를 화면에 표현한다.
+## Component for video selection. The component sends an event to `things-dialog-manager` through the event `things-video-selector-toggle` to display `things-video-selector-dialog` on the screen.
 
 ### Example
 ```html
@@ -16,8 +16,7 @@
 
 ## Dependencies
 
-Element dependencies are managed via [Bower](http://bower.io/). You can
-install that via:
+Element dependencies are managed via [Bower](http://bower.io/). You can install that via:
 
     npm install -g bower
 
