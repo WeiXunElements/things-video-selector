@@ -104,15 +104,17 @@ Copyright © HatioLab Inc. All rights reserved.
   </style>
   <template>
     <label>[[label]]</label> <input is="iron-input" bind-value="{{value}}" />
+    <!-- prettier-ignore-attribute on-tap -->
     <paper-icon-button
       suffix
-      on-tap="(clearValue)"
+      on-tap="clearValue"
       icon="clear"
       alt="clear"
       title="clear"
     >
     </paper-icon-button>
-    <iron-icon prefix on-tap="(toggleImageSelector)"></iron-icon>
+    <!-- prettier-ignore-attribute on-tap -->
+    <iron-icon prefix on-tap="toggleImageSelector"></iron-icon>
 
     <things-ajax
       id="attachment-search"
@@ -143,7 +145,8 @@ Copyright © HatioLab Inc. All rights reserved.
         </div>
       </paper-toolbar>
 
-      <paper-material elevation="0" on-keypress="(handleKeyPress)">
+      <!-- prettier-ignore-attribute on-keypress -->
+      <paper-material elevation="0" on-keypress="handleKeyPress">
         <div class="layout vertical flex">
           <form
             is="iron-form"
@@ -164,10 +167,11 @@ Copyright © HatioLab Inc. All rights reserved.
                 ></things-storage-combo>
               </div>
             </div>
+            <!-- prettier-ignore-attribute on-tap -->
             <paper-fab
               icon="search"
               title="search"
-              on-tap="(_onSearchFormTap)"
+              on-tap="_onSearchFormTap"
             ></paper-fab>
           </form>
         </div>
@@ -185,6 +189,7 @@ Copyright © HatioLab Inc. All rights reserved.
       >
       </things-card-image-list>
 
+      <!-- prettier-ignore-attribute on-threshold -->
       <iron-scroll-threshold
         id="scroller"
         scroll-target="card-list"
@@ -193,7 +198,8 @@ Copyright © HatioLab Inc. All rights reserved.
       </iron-scroll-threshold>
 
       <paper-toolbar>
-        <things-button on-tap="(toggleFileUpload)" hidden="[[!useUpload]]"
+        <!-- prettier-ignore-attribute on-tap -->
+        <things-button on-tap="toggleFileUpload" hidden="[[!useUpload]]"
           >Upload</things-button
         >
       </paper-toolbar>
