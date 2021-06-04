@@ -1,6 +1,6 @@
 {
   "name": "things-video-selector",
-  "version": "v2.2.3",
+  "version": "v2.2.4",
   "authors": ["Shenzhen Weixun"],
   "description": "An element providing Date Picker, Time Picker and Date Range Pickger (things-date-from-to).",
   "keywords": ["web-component", "polymer", "seed"],
