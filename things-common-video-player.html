@@ -1,12 +1,9 @@
 <!--
 @license
-Copyright © HatioLab Inc. All rights reserved.
+Copyright © 2015-2021 Shenzhen Weixun All rights reserved.
 -->
 <link rel="import" href="../polymer/polymer.html" />
-<link
-  rel="import"
-  href="../iron-resizable-behavior/iron-resizable-behavior.html"
-/>
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html" />
 
 <dom-module id="things-common-video-player">
   <template>
@@ -22,20 +19,14 @@ Copyright © HatioLab Inc. All rights reserved.
       }
     </style>
 
-    <video
-      id="the-video"
-      autoplay="[[autoplay]]"
-      loop="[[loop]]"
-      controls="[[controls]]"
-      title="[[title]]"
-    >
+    <video id="the-video" autoplay="[[autoplay]]" loop="[[loop]]" controls="[[controls]]" title="[[title]]">
       <source src="[[videoUrl]]" type="video/mp4" />
     </video>
   </template>
 
   <script>
     Polymer({
-      is: 'things-common-video-player',
+      is: "things-common-video-player",
 
       behaviors: [Polymer.IronResizableBehavior],
 
@@ -47,7 +38,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         autoplay: {
           type: Boolean,
-          value: false
+          value: false,
         },
 
         /**
@@ -57,7 +48,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         loop: {
           type: Boolean,
-          value: false
+          value: false,
         },
 
         /**
@@ -67,7 +58,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         controls: {
           type: Boolean,
-          value: true
+          value: true,
         },
 
         /**
@@ -76,7 +67,7 @@ Copyright © HatioLab Inc. All rights reserved.
          * @type {String}
          */
         title: {
-          type: String
+          type: String,
         },
 
         /**
@@ -85,24 +76,24 @@ Copyright © HatioLab Inc. All rights reserved.
          * @type {String}
          */
         videoUrl: {
-          type: String
-        }
+          type: String,
+        },
       },
 
       listeners: {
-        'iron-resize': '_handleResize'
+        "iron-resize": "_handleResize",
       },
 
       /**
        * Resize Handler
        */
-      _handleResize: function(e) {
+      _handleResize: function (e) {
         if (this.parentElement.offsetHeight > 0) {
-          var videoContainer = this.$['the-video']
-          videoContainer.style.height = this.parentElement.offsetHeight + 'px'
-          videoContainer.style.width = this.parentElement.offsetWidth + 'px'
+          var videoContainer = this.$["the-video"];
+          videoContainer.style.height = this.parentElement.offsetHeight + "px";
+          videoContainer.style.width = this.parentElement.offsetWidth + "px";
         }
-      }
-    })
+      },
+    });
   </script>
 </dom-module>

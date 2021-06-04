@@ -1,28 +1,19 @@
 <!--
 @license
-Copyright © HatioLab Inc. All rights reserved.
+Copyright © 2015-2021 Shenzhen Weixun All rights reserved.
 -->
 <link ref="import" href="../polymer/polymer.html" />
 <link ref="import" href="../iron-input/iron-input.html" />
 <link ref="import" href="../iron-icon/iron-icon.html" />
 <link ref="import" href="../paper-icon-button/paper-icon-button.html" />
 <link ref="import" href="../paper-dialog/paper-dialog.html" />
-<link
-  ref="import"
-  href="../paper-dialog-scrollable/paper-dialog-scrollable.html"
-/>
+<link ref="import" href="../paper-dialog-scrollable/paper-dialog-scrollable.html" />
 <link ref="import" href="../paper-toolbar/paper-toolbar.html" />
 <link ref="import" href="../things-ajax/things-ajax.html" />
 <link ref="import" href="../things-card-image/things-card-image-list.html" />
 <link rel="import" href="../iron-scroll-threshold/iron-scroll-threshold.html" />
-<link
-  rel="import"
-  href="../things-global-behavior/things-global-behavior.html"
-/>
-<link
-  rel="import"
-  href="../things-view-open-behavior/things-view-open-behavior.html"
-/>
+<link rel="import" href="../things-global-behavior/things-global-behavior.html" />
+<link rel="import" href="../things-view-open-behavior/things-view-open-behavior.html" />
 <link rel="import" href="../things-upload/things-file-upload.html" />
 <link rel="import" href="things-common-video-player.html" />
 
@@ -105,14 +96,7 @@ Copyright © HatioLab Inc. All rights reserved.
   <template>
     <label>[[label]]</label> <input is="iron-input" bind-value="{{value}}" />
     <!-- prettier-ignore-attribute on-tap -->
-    <paper-icon-button
-      suffix
-      on-tap="clearValue"
-      icon="clear"
-      alt="clear"
-      title="clear"
-    >
-    </paper-icon-button>
+    <paper-icon-button suffix on-tap="clearValue" icon="clear" alt="clear" title="clear"> </paper-icon-button>
     <!-- prettier-ignore-attribute on-tap -->
     <iron-icon prefix on-tap="toggleImageSelector"></iron-icon>
 
@@ -132,12 +116,7 @@ Copyright © HatioLab Inc. All rights reserved.
 
     <things-ajax id="default-storage" resource-action="get"> </things-ajax>
 
-    <paper-dialog
-      id="dialog"
-      entry-animation="scale-up-animation"
-      exit-animation="fade-out-animation"
-      modal
-    >
+    <paper-dialog id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" modal>
       <paper-toolbar>
         <span class="title">[[title]]</span>
         <div class="buttonsGroup">
@@ -157,22 +136,12 @@ Copyright © HatioLab Inc. All rights reserved.
           >
             <div id="fields" class="layout vertical flex">
               <div class="layout horizontal flex">
-                <things-input-field
-                  label="Name"
-                  value="{{ searchName }}"
-                ></things-input-field>
-                <things-storage-combo
-                  label="Storage"
-                  query-fields="[[storageFilters]]"
-                ></things-storage-combo>
+                <things-input-field label="Name" value="{{ searchName }}"></things-input-field>
+                <things-storage-combo label="Storage" query-fields="[[storageFilters]]"></things-storage-combo>
               </div>
             </div>
             <!-- prettier-ignore-attribute on-tap -->
-            <paper-fab
-              icon="search"
-              title="search"
-              on-tap="_onSearchFormTap"
-            ></paper-fab>
+            <paper-fab icon="search" title="search" on-tap="_onSearchFormTap"></paper-fab>
           </form>
         </div>
       </paper-material>
@@ -190,24 +159,18 @@ Copyright © HatioLab Inc. All rights reserved.
       </things-card-image-list>
 
       <!-- prettier-ignore-attribute on-lower-threshold -->
-      <iron-scroll-threshold
-        id="scroller"
-        scroll-target="card-list"
-        on-lower-threshold="goNextPage"
-      >
+      <iron-scroll-threshold id="scroller" scroll-target="card-list" on-lower-threshold="goNextPage">
       </iron-scroll-threshold>
 
       <paper-toolbar>
         <!-- prettier-ignore-attribute on-tap -->
-        <things-button on-tap="toggleFileUpload" hidden="[[!useUpload]]"
-          >Upload</things-button
-        >
+        <things-button on-tap="toggleFileUpload" hidden="[[!useUpload]]">Upload</things-button>
       </paper-toolbar>
     </paper-dialog>
   </template>
   <script>
     Polymer({
-      is: 'things-video-selector',
+      is: "things-video-selector",
 
       behaviors: [Things.GlobalBehavior, Things.ViewOpenBehavior],
 
@@ -218,7 +181,7 @@ Copyright © HatioLab Inc. All rights reserved.
          * @type {String}
          */
         label: {
-          type: String
+          type: String,
         },
 
         /**
@@ -228,7 +191,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         value: {
           type: String,
-          observer: '_valueChanged'
+          observer: "_valueChanged",
         },
 
         /**
@@ -238,7 +201,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         title: {
           type: String,
-          value: 'Video Selector'
+          value: "Video Selector",
         },
 
         /**
@@ -248,7 +211,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         resourceUrl: {
           type: String,
-          value: 'attachments/list/video'
+          value: "attachments/list/video",
         },
 
         /**
@@ -258,7 +221,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         totalCount: {
           type: Number,
-          value: 0
+          value: 0,
         },
 
         /**
@@ -268,7 +231,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         page: {
           type: Number,
-          value: 1
+          value: 1,
         },
 
         /**
@@ -278,7 +241,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         limit: {
           type: Number,
-          value: 50
+          value: 50,
         },
 
         /**
@@ -288,7 +251,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         lastResponse: {
           type: Object,
-          observer: '_responseChanged'
+          observer: "_responseChanged",
         },
 
         /**
@@ -298,9 +261,9 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         newItems: {
           type: Array,
-          value: function() {
-            return []
-          }
+          value: function () {
+            return [];
+          },
         },
 
         /**
@@ -311,7 +274,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         detailFields: {
           type: String,
-          value: 'file_size'
+          value: "file_size",
         },
 
         /**
@@ -320,7 +283,7 @@ Copyright © HatioLab Inc. All rights reserved.
          * @type {Object}
          */
         metaData: {
-          type: Object
+          type: Object,
         },
 
         /**
@@ -331,7 +294,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         displayField: {
           type: String,
-          value: 'name'
+          value: "name",
         },
 
         /**
@@ -341,7 +304,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         displayFullUrl: {
           type: Boolean,
-          value: false
+          value: false,
         },
 
         /**
@@ -350,7 +313,7 @@ Copyright © HatioLab Inc. All rights reserved.
          * @type {String}
          */
         baseUrlAlias: {
-          type: String
+          type: String,
         },
 
         /**
@@ -360,7 +323,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         defaultStorage: {
           type: String,
-          observer: '_defaultStorageChanged'
+          observer: "_defaultStorageChanged",
         },
 
         /**
@@ -370,9 +333,9 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         sortFields: {
           type: Array,
-          value: function() {
-            return [{ field: 'created_at', ascending: false }]
-          }
+          value: function () {
+            return [{ field: "created_at", ascending: false }];
+          },
         },
 
         /**
@@ -382,7 +345,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         queryFields: {
           type: Array,
-          value: []
+          value: [],
         },
 
         /**
@@ -391,7 +354,7 @@ Copyright © HatioLab Inc. All rights reserved.
          * @type {Array}
          */
         storageFilters: {
-          type: Array
+          type: Array,
         },
 
         /**
@@ -401,7 +364,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         useUpload: {
           type: Boolean,
-          value: false
+          value: false,
         },
 
         /**
@@ -410,7 +373,7 @@ Copyright © HatioLab Inc. All rights reserved.
          * @type {String}
          */
         searchName: {
-          type: String
+          type: String,
         },
 
         /**
@@ -419,49 +382,45 @@ Copyright © HatioLab Inc. All rights reserved.
          * @type {String}
          */
         searchStorage: {
-          type: String
+          type: String,
         },
 
         selectedVideoInfo: {
-          type: Object
+          type: Object,
         },
 
         playFlag: {
           type: Boolean,
-          value: false
-        }
+          value: false,
+        },
       },
 
       listeners: {
-        'things-card-image-selected': '_onImageSelected',
-        'scroller.lower-threshold': 'goNextPage',
-        'things-combo-value-changed': 'storageChanged',
-        'things-play-video': 'setPlayVideoInfo',
-        'default-storage.things-ajax-response': '_defaultStorageValueChanged'
+        "things-card-image-selected": "_onImageSelected",
+        "scroller.lower-threshold": "goNextPage",
+        "things-combo-value-changed": "storageChanged",
+        "things-play-video": "setPlayVideoInfo",
+        "default-storage.things-ajax-response": "_defaultStorageValueChanged",
       },
 
       /**
        * dialog에서 image를 클릭하면 value와 metaData에 Obj형태의 detail 정보를 담는다.
        * 만약 displayField가 정의 되었다면 detail에서 해당 필드 값을 value에 초기화 함 (기본값은 name)
        */
-      _onImageSelected: function(e) {
-        var baseUrl = this.baseUrlAlias
-          ? this.baseUrlAlias
-          : this.get('globals.baseUrl')
-        var tempValue = e.detail[this.displayField]
+      _onImageSelected: function (e) {
+        var baseUrl = this.baseUrlAlias ? this.baseUrlAlias : this.get("globals.baseUrl");
+        var tempValue = e.detail[this.displayField];
 
-        this.value = this.displayFullUrl
-          ? baseUrl + '/stream/' + tempValue
-          : tempValue
+        this.value = this.displayFullUrl ? baseUrl + "/stream/" + tempValue : tempValue;
 
-        e.detail.value = this.value
-        this.metaData = e.detail
+        e.detail.value = this.value;
+        this.metaData = e.detail;
 
         if (this.playFlag) {
-          this.playVideo(this.selectedVideoInfo)
-          this.playFlag = false
+          this.playVideo(this.selectedVideoInfo);
+          this.playFlag = false;
         } else {
-          this.$['dialog'].close()
+          this.$["dialog"].close();
         }
       },
 
@@ -469,46 +428,41 @@ Copyright © HatioLab Inc. All rights reserved.
        * ajax 호출을 통해 받은 lastResponse에서 image 파일이 아닌 것들을 filltering
        * ********
        */
-      _responseChanged: function(lastResponse) {
-        var newItems =
-          lastResponse && lastResponse.items ? lastResponse.items : []
-        this.totalCount =
-          lastResponse && lastResponse.total
-            ? lastResponse.total
-            : this.newItems.length
-        newItems.forEach(function(item) {
-          item.attachment_id = item.id
-        })
+      _responseChanged: function (lastResponse) {
+        var newItems = lastResponse && lastResponse.items ? lastResponse.items : [];
+        this.totalCount = lastResponse && lastResponse.total ? lastResponse.total : this.newItems.length;
+        newItems.forEach(function (item) {
+          item.attachment_id = item.id;
+        });
 
-        this.newItems =
-          this.page == 1 ? newItems : this.newItems.concat(newItems)
+        this.newItems = this.page == 1 ? newItems : this.newItems.concat(newItems);
       },
 
       /**
        * value 값이 변경 되었을때 발생하는 이벤트
        * ********
        */
-      _valueChanged: function(value) {
-        this.fire('things-image-changed', value)
+      _valueChanged: function (value) {
+        this.fire("things-image-changed", value);
       },
 
       /**
        * search btn tap event
        * ********
        */
-      _onSearchFormTap: function() {
-        this.refreshImages()
+      _onSearchFormTap: function () {
+        this.refreshImages();
       },
 
       /**
        * storage combo에서 값변경시
        * ********
        */
-      storageChanged: function(event) {
-        if (event.detail.value && typeof event.detail.value == 'number') {
-          this.searchStorage = event.detail.value
+      storageChanged: function (event) {
+        if (event.detail.value && typeof event.detail.value == "number") {
+          this.searchStorage = event.detail.value;
         } else if (event.detail.item && event.detail.item.id) {
-          this.searchStorage = event.detail.item.id
+          this.searchStorage = event.detail.item.id;
         }
       },
 
@@ -516,36 +470,36 @@ Copyright © HatioLab Inc. All rights reserved.
        * 버튼 클릭시 image selector dialog toggle
        * ********
        */
-      toggleImageSelector: function() {
+      toggleImageSelector: function () {
         if (this.newItems && this.newItems.length > 0) {
-          this.newItems = []
+          this.newItems = [];
         }
 
-        this.defaultStorage = ''
-        this.defaultStorage = this.globals.defaultImageStorage
-        this.$['dialog'].open()
+        this.defaultStorage = "";
+        this.defaultStorage = this.globals.defaultImageStorage;
+        this.$["dialog"].open();
       },
 
       /**
        * 셀렉터에 출력된 이미지를 refresh하는 버튼
        * ********
        */
-      refreshImages: function() {
-        this.page = 1
-        var searchName = this.searchName
-        var searchStorage = this.searchStorage
-        var filters = []
+      refreshImages: function () {
+        this.page = 1;
+        var searchName = this.searchName;
+        var searchStorage = this.searchStorage;
+        var filters = [];
 
         if (this.newItems && this.newItems.length > 0) {
-          this.newItems = []
+          this.newItems = [];
         }
 
         if (searchName) {
           filters.push({
-            name: 'name',
-            operator: 'contains',
-            value: searchName
-          })
+            name: "name",
+            operator: "contains",
+            value: searchName,
+          });
         }
 
         // if(searchStorage) {
@@ -555,69 +509,68 @@ Copyright © HatioLab Inc. All rights reserved.
         //   });
         // }
 
-        this.queryFields = filters
-        this.$['attachment-search'].generateRequest()
+        this.queryFields = filters;
+        this.$["attachment-search"].generateRequest();
       },
 
       /**
        * 버튼 클릭시 upload dialog toggle
        * ********
        */
-      toggleFileUpload: function() {
-        var upload = document.createElement('things-file-upload')
-        upload.id = 'file-upload'
-        upload.target = 'upload'
-        upload.method = 'POST'
-        upload.timeout = 300000
-        upload.hidden = false
-        upload.defaultStorage = this.defaultStorage
-        this.openPopupView(upload, true)
+      toggleFileUpload: function () {
+        var upload = document.createElement("things-file-upload");
+        upload.id = "file-upload";
+        upload.target = "upload";
+        upload.method = "POST";
+        upload.timeout = 300000;
+        upload.hidden = false;
+        upload.defaultStorage = this.defaultStorage;
+        this.openPopupView(upload, true);
       },
 
       /**
        * 다음 페이지 이동
        * ******
        */
-      goNextPage: function() {
+      goNextPage: function () {
         if (this.totalCount == 0) {
-          this.$.scroller.clearTriggers()
-          return
+          this.$.scroller.clearTriggers();
+          return;
         }
 
         if (this.page * this.limit < this.totalCount) {
-          this.page = this.page + 1
-          this.$['attachment-search'].generateRequest()
+          this.page = this.page + 1;
+          this.$["attachment-search"].generateRequest();
         }
-        this.$.scroller.clearTriggers()
+        this.$.scroller.clearTriggers();
       },
 
       /**
        * 선택한 이미지의 정보들을 삭제 합니다.
        * *******
        */
-      clearValue: function() {
-        this.value = ''
-        this.metaData = ''
+      clearValue: function () {
+        this.value = "";
+        this.metaData = "";
       },
 
       /**
        * enter 입력시
        * ******
        */
-      handleKeyPress: function(e) {
+      handleKeyPress: function (e) {
         if (e.charCode == 13) {
-          this._onSearchFormTap()
+          this._onSearchFormTap();
         }
       },
 
       /**
        * 전달받은 defaultStorage를 이용하여 ajax 호출 합니다.
        */
-      _defaultStorageChanged: function(defaultStorage) {
+      _defaultStorageChanged: function (defaultStorage) {
         if (defaultStorage) {
-          this.$['default-storage'].resourceUrl =
-            'storage_infos/show_by_name?name=' + defaultStorage
-          this.$['default-storage'].generateRequest()
+          this.$["default-storage"].resourceUrl = "storage_infos/show_by_name?name=" + defaultStorage;
+          this.$["default-storage"].generateRequest();
         }
       },
 
@@ -626,30 +579,30 @@ Copyright © HatioLab Inc. All rights reserved.
        * *******
        *
        */
-      _defaultStorageValueChanged: function(e) {
-        this.searchStorage = e.detail.id
-        this.refreshImages()
+      _defaultStorageValueChanged: function (e) {
+        this.searchStorage = e.detail.id;
+        this.refreshImages();
       },
 
-      setPlayVideoInfo: function(e) {
-        this.selectedVideoInfo = e.detail
-        this.playFlag = true
+      setPlayVideoInfo: function (e) {
+        this.selectedVideoInfo = e.detail;
+        this.playFlag = true;
       },
 
-      playVideo: function(videoInfo) {
-        var baseUrl = this.get('globals.baseUrl')
-        var videoId = videoInfo.id
-        var videoTitle = videoInfo.name
-        var videoUrl = videoInfo.path
+      playVideo: function (videoInfo) {
+        var baseUrl = this.get("globals.baseUrl");
+        var videoId = videoInfo.id;
+        var videoTitle = videoInfo.name;
+        var videoUrl = videoInfo.path;
 
         if (baseUrl && videoUrl) {
-          videoUrl = baseUrl + '/stream/' + videoId
-          var videoView = document.createElement('things-common-video-player')
-          videoView.title = videoTitle
-          videoView.videoUrl = videoUrl
-          this.openPopupView(videoView, true)
+          videoUrl = baseUrl + "/stream/" + videoId;
+          var videoView = document.createElement("things-common-video-player");
+          videoView.title = videoTitle;
+          videoView.videoUrl = videoUrl;
+          this.openPopupView(videoView, true);
         }
-      }
-    })
+      },
+    });
   </script>
 </dom-module>
